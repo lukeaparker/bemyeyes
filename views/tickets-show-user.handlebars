@@ -1,0 +1,64 @@
+  
+<div class="row">
+         <div class="col-sm-2 col-sm-offset-3 bg-card">
+    			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+<ul class="nav navbar-nav navbar-right">
+  {{#if currentUser}}
+    <li><a href="/logout">Logout</a></li>
+    <a href="/user/{{currentUser.username}}">Proccessed</a>
+      <a href="/tickets/queued/user">Queued</a>
+  {{else}}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/sign-up">Sign Up</a></li>
+  {{/if}}
+</ul>
+
+
+
+	      </div>
+    	</nav>
+
+	      </div>
+
+
+
+    <div class="col-sm-6 col-sm-offset-3 bg-card">
+        <h3>{{ticket.imageName}}</h3>
+        <h3>{{ticket.evaluated}}</h3>
+
+        <p>{{ticket.context}}</p>
+        <div><small>{{ticket.author.username}}</small></div>
+         <img src="{{ticket.url}}">      
+        </div>
+
+    <div class="col-sm bg-card">
+        {{#if ticket.evaluations}}
+        <h4>Evaluation</h4>
+        {{#each ticket.evaluations}}
+            <div>
+                <p>{{this.description}}</p>
+                <p class="text-right">{{this.author.username}}</p>
+            </div>
+        {{/each}}
+        {{else}}
+        <hr>
+        {{#if currentUser}}
+            <form action="/tickets/{{ticket._id}}/evaluations" method="POST">
+                <h3>Annotation</h3>
+                <label for="evaluation-description">Description</label>
+                <textarea class="form-control" id="evaluation-description" name="description" placeholder="provide a detailed description of the image to your left"></textarea>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        {{else}}
+            <h6>Log in or sign up to leave a comment.</h6>
+        {{/if}}
+
+
+        {{/if}}
+
+    </div>
+</div>

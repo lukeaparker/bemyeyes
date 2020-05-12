@@ -1,0 +1,18 @@
+    			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+<ul class="nav navbar-nav navbar-right">
+  {{#if currentUser}}
+    <li><a href="/logout">Logout</a></li>
+    <a href="/n/{{currentUser.username}}">Proccessed</a>
+      <a href="/tickets/queued/user">Queued</a>
+  {{else}}
+    <li><a href="/login">Login</a></li>
+    <li><a href="/sign-up">Sign Up</a></li>
+  {{/if}}
+</ul>
+
+
+
+	      </div>
+    	</nav>

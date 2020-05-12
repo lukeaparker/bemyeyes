@@ -1,0 +1,22 @@
+<div class="row justify-content-center">
+  <div class="col-sm-4 col-sm-offset-4 align-center ">
+    <form action="/tickets/new" method="post">
+      <legend><center>New Post</center></legend>
+      <div class="form-group">
+        <label for="post-imageName">Image Name</label>
+        <input type="text" name="imageName" class="form-control" id="ticket-imageName" placeholder="provide a name fo ryour image">
+      </div>
+      <div class="form-group">
+        <label for="post-url">Url</label>
+        <input type="url" name="url" class="form-control" id="ticket-url" placeholder="https://www.google.com">
+      </div>
+      <div class="form-group">
+        <label for="post-summary">Context</label>
+        <textarea name="context" class="form-control" id="ticket-context" placeholder="Title"></textarea>
+      </div>
+      <div class='text-center'>
+        <button type="submit" class="btn btn-primary">Create Post</button>
+      </div>
+    </form>
+  </div>
+</div>
