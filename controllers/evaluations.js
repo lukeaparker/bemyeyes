@@ -24,7 +24,7 @@ module.exports = function (app) {
               ]);
           })
           .then(ticket => {
-              res.redirect(`/tickets/scribe/${req.params.ticketId}`);
+              res.redirect(`/tickets/queued/scribe`);
           })
           .catch(err => {
               console.log(err);

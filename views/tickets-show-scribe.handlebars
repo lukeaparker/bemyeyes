@@ -1,35 +1,41 @@
   
 <div class="row">
          <div class="col-sm-2 col-sm-offset-3 bg-card">
-    			<nav id="sidebar">
-				<div class="p-4 pt-5">
-		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-<ul class="nav navbar-nav navbar-right">
-  {{#if currentUser}}
-    <li><a href="/logout">Logout</a></li>
-      <a href="/tickets/queued/scribe">Queued</a>
-  {{else}}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/sign-up">Sign Up</a></li>
-  {{/if}}
-</ul>
+    <center>
+    <nav id="sidebar" class="navbar-lg align-cente">
+        <div class="sidebar-header">
+        </div>
 
+        <ul class="list-unstyled components">
+<i class="material-icons" style="font-size:100px;">people</i>
+</li>
+            <h2>{{currentUser.username}}</h2>
+          <li>
+              </li>
+          <li>
+<li>  <a href="/tickets/new" class="btn btn-primary navbar-btn"><i class="material-icons" style="font-size:15px;">add</i>
+New Evaluation</a>
 
+      <a href="/tickets/queued/scribe" class="href">Queued</a>
+      </li>
+      <li>      <a href="/scribe/{{currentUser.username}}" class="href">Proccessed</a>
+</li>
 
-	      </div>
-    	</nav>
-
+ 
+    </nav>
+    </center>
 	      </div>
 
 
 
     <div class="col-sm-6 col-sm-offset-3 bg-card">
         <h3>{{ticket.imageName}}</h3>
-        <h3>{{ticket.evaluated}}</h3>
 
         <p>{{ticket.context}}</p>
         <div><small>{{ticket.author.username}}</small></div>
-         <img src="{{ticket.url}}">      
+        <center>
+         <img class="show-image" src="{{ticket.url}}"> 
+         </center>     
         </div>
 
     <div class="col-sm bg-card">

@@ -1,23 +1,35 @@
   
 <div class="row">
-      <div class="col-sm-2 col-sm-offset-3 bg-card">
-    			<nav id="sidebar">
-				<div class="p-4 pt-5">
-		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-<ul class="nav navbar-nav navbar-right">
-  {{#if currentUser}}
-    <li><a href="/logout">Logout</a></li>
-      <a href="/tickets/queued/scribe">Queued</a>
-  {{else}}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/sign-up">Sign Up</a></li>
-  {{/if}}
-</ul>
+      <div class="col-sm-2 col-sm-offset-3 align-cente">
+    	<div class="wrapper">
+    <!-- Sidebar -->
+    <center>
+    <nav id="sidebar" class="navbar-lg align-cente">
+        <div class="sidebar-header">
+        </div>
+
+        <ul class="list-unstyled components">
+<i class="material-icons" style="font-size:100px;">people</i>
+</li>
+           <li>
 
 
+      </li>
+            <h1>{{currentUser.username}}</h1>
+       
+          <li>
 
-	      </div>
-    	</nav>
+
+      <a href="/tickets/queued/scribe" class="href">Queued</a>
+      </li>
+      <li>      <a href="/scribe/{{currentUser.username}}" class="href">Proccessed</a>
+</li>
+
+ 
+    </nav>
+    </center>
+
+</div>
 
     </div>
     <div class="col-lg bg-card">
@@ -26,7 +38,7 @@
 
               <li class="list-group-item list-group-item-card">
                 <div class="lead">
-                  <a href="/tickets/scribe/{{this._id}}" class="lead">{{this.imageName}}</a>
+                  <a href="/tickets/{{this._id}}/scribe" class="href">{{this.imageName}}</a>
                 </div>
                 <div class="text-right">
                   <a href="/n/{{this.profile}}">{{this.author.username}}</a>

@@ -30,6 +30,8 @@ h3 {
 
 
 
+
+
 .form-control {
     background-color: #454547;
     border: 5px solid #2f2531;
@@ -38,4 +40,26 @@ h3 {
 .list-group-item-card {
   background-color: #2f2531;
   ;
+}
+
+
+
+.href {
+    color: #C0C0C0;
+}
+
+.loading-imgage {
+    width: 50%;
+    height: auto;
+  }
+
+  .show-imgage {
+    width: 100%;
+    height: auto;
+  }
+
+  .button-color {
+    background-color: #2f2531;
+    border-color: black;
+    
 }

@@ -39,9 +39,8 @@ module.exports = (app) => {
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  const group = req.body.group;
   // Find this user name
-  User.findOne({ username }, "username password")
+  User.findOne({ username }, "username password group")
     .then(user => {
       if (!user) {
         // User not found
@@ -59,10 +58,12 @@ app.post("/login", (req, res) => {
           });
           // Set a cookie and redirect to root
           res.cookie("nToken", token, { maxAge: 900000, httpOnly: true });
-          if (!group == 'user') {
+          if (user.group == '1') {
             res.redirect("/tickets/queued/user");
           }
+         else {
           res.redirect("/tickets/queued/scribe");
+        }
         });
       })
       .catch(err => {

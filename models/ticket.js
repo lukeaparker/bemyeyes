@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const Populate = require("../utils/autopopulate");
 
 const TicketSchema = new Schema({
+  createdAt: { type: Date },
   imageName: { type: String, required: true },
   url: { type: String, required: true },
   context: { type: String, required: true },

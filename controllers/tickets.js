@@ -31,7 +31,7 @@ app.post("/tickets/new", (req, res) => {
               user.tickets.unshift(ticket);
               user.save();
               // REDIRECT TO THE NEW POST
-              res.redirect(`/tickets/user/${ticket._id}`);
+              res.redirect(`/tickets/${ticket._id}/user`);
           })
           .catch(err => {
               console.log(err.message);
@@ -78,8 +78,8 @@ app.post("/tickets/new", (req, res) => {
 
 
 
-// SHOW
-app.get("/tickets/user/:id", function (req, res) {
+// SHOW USER
+app.get("/tickets/:id/user", function (req, res) {
   var currentUser = req.user;
   Ticket.findById(req.params.id).populate('evaluations').lean()
       .then(ticket => {
@@ -90,8 +90,8 @@ app.get("/tickets/user/:id", function (req, res) {
       });
 });
 
-// SHOW
-app.get("/tickets/scribe/:id", function (req, res) {
+// SHOW SCRIBE
+app.get("/tickets/:id/scribe", function (req, res) {
     var currentUser = req.user;
     Ticket.findById(req.params.id).populate('evaluations').lean()
         .then(ticket => {
@@ -102,7 +102,7 @@ app.get("/tickets/scribe/:id", function (req, res) {
         });
   });
 
-// PROCESSED
+// PROCESSED USER
 app.get("/user/:profile", function (req, res) {
   var currentUser = req.user;
   Ticket.find({ profile: currentUser._id, evaluated: true }).lean()
@@ -114,7 +114,33 @@ app.get("/user/:profile", function (req, res) {
       });
 });
 
+// PROCESSED SCRIBE
+app.get("/scribe/:profile", function (req, res) {
+    var currentUser = req.user;
+    Evaluation.find({ profile: currentUser._id }).lean()
+        .then(tickets => {
+            res.render("tickets-queued-scribe", { tickets, currentUser });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+  });
+
+
+
+// TICKETS DELETE
+app.get("/tickets/:id/delete", function (req, res) {
+    var currentUser = req.user;
+    Ticket.findByIdAndDelete(req.params.id)
+        .then(ticket => {
+            res.redirect("/tickets/queued/user");
+        })
+        .catch(err => {
+            console.log(err.message);
+        });
+  });
 
 
 
 }
+

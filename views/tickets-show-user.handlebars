@@ -1,36 +1,49 @@
   
 <div class="row">
-         <div class="col-sm-2 col-sm-offset-3 bg-card">
-    			<nav id="sidebar">
-				<div class="p-4 pt-5">
-		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
-<ul class="nav navbar-nav navbar-right">
-  {{#if currentUser}}
-    <li><a href="/logout">Logout</a></li>
-    <a href="/user/{{currentUser.username}}">Proccessed</a>
-      <a href="/tickets/queued/user">Queued</a>
-  {{else}}
-    <li><a href="/login">Login</a></li>
-    <li><a href="/sign-up">Sign Up</a></li>
-  {{/if}}
-</ul>
+         <div class="col-sm-2 col-sm-offset-3">
+    <center>
+    <nav id="sidebar" class="navbar-lg align-cente">
+        <div class="sidebar-header">
+        </div>
 
+        <ul class="list-unstyled components">
+<i class="material-icons" style="font-size:100px;">people</i>
+</li>
+            <h1>{{currentUser.username}}</h1>
+          <li>
+<li>  <a href="/tickets/new" class="btn btn-primary navbar-btn"><i class="material-icons" style="font-size:15px;">add</i>
+New Evaluation</a>
 
+      <a href="/tickets/queued/user" class="href">Queued</a>
+      </li>
+      <li>      <a href="/user/{{currentUser.username}}" class="href">Proccessed</a>
+</li>
 
-	      </div>
-    	</nav>
-
+ 
+    </nav>
+    </center>
 	      </div>
 
 
 
     <div class="col-sm-6 col-sm-offset-3 bg-card">
+      <div class="row">
+          <div class="col">
         <h3>{{ticket.imageName}}</h3>
-        <h3>{{ticket.evaluated}}</h3>
+          </div>
+    <div class="col-lg text-right">
+        <a href="/tickets/{{ticket._id}}/delete" class="href"><i class="material-icons" style="font-size:20px;">delete</i>Delete</a>
+        </div>
+
+      </div>
 
         <p>{{ticket.context}}</p>
         <div><small>{{ticket.author.username}}</small></div>
-         <img src="{{ticket.url}}">      
+        <center>
+
+         <img class="show-image" src="{{ticket.url}}">      
+
+        </center>
         </div>
 
     <div class="col-sm bg-card">
@@ -45,14 +58,10 @@
         {{else}}
         <hr>
         {{#if currentUser}}
-            <form action="/tickets/{{ticket._id}}/evaluations" method="POST">
-                <h3>Annotation</h3>
-                <label for="evaluation-description">Description</label>
-                <textarea class="form-control" id="evaluation-description" name="description" placeholder="provide a detailed description of the image to your left"></textarea>
-                <div class="text-right">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                </div>
-            </form>
+         <center>
+            <h3>Processing</h3>
+             <img class="loading-imgage" src="https://46.media.tumblr.com/345127a42a4baf76158920730f808f3b/tumblr_nak5muSmwi1r2geqjo1_500.gif" class="responsive">
+         </center>
         {{else}}
             <h6>Log in or sign up to leave a comment.</h6>
         {{/if}}
