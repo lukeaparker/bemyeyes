@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
 var cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
-const serverless = require('serverless-http')
 
 
 app.use(cookieParser()); // Add this after you initialize express.
@@ -54,9 +53,8 @@ require('./controllers/landing.js')(app)
 
 
 // Start Server
-app.listen(3000, () => {
+app.listen(5000, () => {
   console.log('Bemyeyes listening on port localhost:3000!');
 });
 
 module.exports = app
-module.exports.handler = serverless(app)
