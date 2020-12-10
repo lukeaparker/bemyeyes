@@ -1,10 +1,13 @@
-require('dotenv').config();
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
-var cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+var cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
+const serverless = require('serverless-http')
+
+
 app.use(cookieParser()); // Add this after you initialize express.
 
 app.use(express.static('public'))
@@ -34,8 +37,9 @@ var checkAuth = (req, res, next) => {
     req.user = decodedToken.payload;
   }
 
-  next();
-};
+  next()
+}
+
 app.use(checkAuth);
 
 // routes
@@ -45,11 +49,14 @@ require('./controllers/evaluations.js')(app)
 
 require('./controllers/auth.js')(app)
 
+require('./controllers/landing.js')(app)
+
 
 
 // Start Server
 app.listen(3000, () => {
-  console.log('Reddit Search listening on port localhost:3000!');
+  console.log('Bemyeyes listening on port localhost:3000!');
 });
 
 module.exports = app
+module.exports.handler = serverless(app)

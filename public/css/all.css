@@ -60,6 +60,9 @@ h3 {
 
   .button-color {
     background-color: #2f2531;
-    border-color: black;
-    
+    border-color: black;  
+}
+
+.top-align {
+    padding-top: 50px;
 }
